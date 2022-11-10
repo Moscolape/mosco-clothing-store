@@ -1,16 +1,21 @@
 import { Fragment, useContext } from "react";
 import {Link, Outlet} from "react-router-dom";
 
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+
 import { UserContext } from "../../contexts/user.context";
-import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { CartContext } from "../../contexts/cart.context";
+
 
 import {ReactComponent as MoscoLogo} from '../../assets/crown.svg';
+import { signOutUser } from "../../utils/firebase/firebase.utils";
+
 import './navigation.styles.scss';
 
 const NavigationBar = () => {
     const {currentUser }  = useContext(UserContext);
-    // console.log(currentUser);
-
+    const {isCartOpen} = useContext(CartContext);
 
     return (
         <Fragment>
@@ -31,7 +36,9 @@ const NavigationBar = () => {
                             </Link>
                         )
                     }
+                    <CartIcon/>
                 </div>
+                {isCartOpen && <CartDropdown/>}
             </div>
             <Outlet/>
         </Fragment>
