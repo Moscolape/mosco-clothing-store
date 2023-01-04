@@ -1,61 +1,51 @@
-import { useState } from "react";
-import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { SignInContainer, ButtonsContainer } from "./sign-in-form.styles";
+import FormInput from '../form-input/form-input.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
-// import { UserContext } from "../../contexts/user.context";
-
-import FormInput from "../form-input/form-input.component";
-import Button, {BUTTON_TYPE_CLASSES} from "../button/button.component";
-
+import { SignInContainer, ButtonsContainer } from './sign-in-form.styles';
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from '../../store/user/user.action';
 
 const defaultFormFields = {
-    email: '',
-    password: '',
-}
+  email: '',
+  password: '',
+};
 
 
 const SignInForm = () => {
-
+    const dispatch = useDispatch();
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const {email, password} = formFields;
+    const { email, password } = formFields;
 
-    // const {setCurrentUser} = useContext(UserContext);
-
-    const resetFormfields = () => {
+    const resetFormFields = () => {
         setFormFields(defaultFormFields);
     };
 
     const signInWithGoogle = async () => {
-        await signInWithGooglePopup();
+        dispatch(googleSignInStart());
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
         try {
-            await signInAuthUserWithEmailAndPassword(email, password);
-            resetFormfields();
-
-        } catch (err) {
-            switch(err.code) {
-                case 'auth/wrong-password':
-                    alert('Incorrect password for email');
-                    break;
-                case 'auth/user-not-found':
-                    alert("There's no user associated with this email");
-                    break;
-                default:
-                    console.log(err);
-            }
+        dispatch(emailSignInStart(email, password));
+        resetFormFields();
+        } catch (error) {
+        console.log('user sign in failed', error);
         }
     };
 
-
     const handleChange = (event) => {
-        const {name, value} = event.target;
-        setFormFields({...formFields, [name]: value});
-    }
+        const { name, value } = event.target;
+
+        setFormFields({ ...formFields, [name]: value });
+    };
+
 
     return (
         <SignInContainer>
