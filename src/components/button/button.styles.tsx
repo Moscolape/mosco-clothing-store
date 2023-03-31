@@ -48,6 +48,10 @@ export const InvertedButton = styled(BaseButton) `
         color: white;
         border: none;
     }
+
+    @media screen and (max-width: 800px) {
+        font-size: 12px;
+    }
 `
 
 export const ButtonSpinner = styled(SpinnerContainer)`
