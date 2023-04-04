@@ -56,7 +56,7 @@ export const ProductCartContainer = styled.div`
     }
 
     @media screen and (max-width: 400px) {
-        width: 90vw;
+        width: 95vw;
     }
 `;
 

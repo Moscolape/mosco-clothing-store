@@ -8,6 +8,11 @@ export const CheckoutItemContainer = styled.div`
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
+
+  @media screen and (max-width: 800px) {
+    justify-content: space-between;
+    font-size: 12px;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -18,14 +23,26 @@ export const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  @media screen and (max-width: 800px) {
+    width: 22%;
+  }
 `;
 
 export const BaseSpan = styled.span`
   width: 23%;
+
+  @media screen and (max-width: 800px) {
+    width: 21%;
+  }
 `;
 
 export const Quantity = styled(BaseSpan)`
   display: flex;
+
+  @media screen and (max-width: 800px) {
+    width: 25%;
+  }
 `;
 
 export const Arrow = styled.div`

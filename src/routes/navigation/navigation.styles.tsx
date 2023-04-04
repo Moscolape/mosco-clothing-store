@@ -10,7 +10,7 @@ export const NavigationContainer = styled.div `
 
   @media screen and (max-width: 800px) {
     height: 60px;
-    padding: 10px 20px;
+    padding: 10px 0px;
     margin-bottom: 20px;
   }
 `
@@ -31,10 +31,6 @@ export const NavLinksContainer = styled.div `
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  @media screen and (max-width: 800px) {
-    width: 80px;
-  }
 `
 
 export const NavLink = styled(Link) `
