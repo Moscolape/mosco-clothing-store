@@ -31,7 +31,7 @@ const CheckoutItem: FC<CheckoutItemProps> = memo(({cartItem}) => {
       <Quantity>
         <Arrow onClick={decreaseItems}>&minus;</Arrow>
         <Value>{quantity}</Value>
-        <Arrow onClick={increaseItems}>&plus;</Arrow>
+        <Arrow onClick={increaseItems}>&#43;</Arrow>
       </Quantity>
       <BaseSpan> {price}</BaseSpan>
       <RemoveButton onClick={clearItems}>&#10005;</RemoveButton>
