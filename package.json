@@ -72,6 +72,7 @@
     ]
   },
   "devDependencies": {
-    "@types/redux-logger": "^3.0.9"
+    "@types/redux-logger": "^3.0.9",
+    "redux-saga-test-plan": "^4.0.6"
   }
 }
